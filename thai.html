@@ -60,6 +60,28 @@ margin-top:30px;
 color:#a67c52;
 text-decoration:none;
 }
+  /* ANIMATION PAGE */
+
+.content{
+opacity:0;
+transform:translateY(30px);
+animation:fadeUp 1.3s ease forwards;
+}
+
+.content p{
+animation-delay:0.2s;
+}
+
+.content .btn{
+animation-delay:0.4s;
+}
+
+@keyframes fadeUp{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
 </style>
 </head>
 
@@ -70,7 +92,7 @@ text-decoration:none;
 </header>
 
 <div class="section">
-<div class="container">
+<div class="container content">
 
 <p>
 A dynamic and energizing massage combining pressure techniques and gentle stretching.
