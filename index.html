@@ -57,7 +57,7 @@ text-decoration:none;
 font-size:1em;
 }
 
-/* LANG SWITCH (CORRIGÉ + LUXE) */
+/* LANG SWITCH */
 .lang-switch{
 position:absolute;
 top:25px;
@@ -207,23 +207,23 @@ transform:translateY(0);
 
 <div class="grid">
 
-<a href="semi-massage.html" class="card">
+<a id="link1" href="semi-massage.html" class="card">
 <span id="card1">Semi Massage — 30 min</span>
 </a>
 
-<a href="full-body.html" class="card">
+<a id="link2" href="full-body.html" class="card">
 <span id="card2">Full Body Massage — 50 min</span>
 </a>
 
-<a href="ritual.html" class="card">
+<a id="link3" href="ritual.html" class="card">
 <span id="card3">Complete Ritual — 70 min</span>
 </a>
 
-<a href="thai.html" class="card">
+<a id="link4" href="thai.html" class="card">
 <span id="card4">Thai Massage — 60 min</span>
 </a>
 
-<a href="hot-stone.html" class="card">
+<a id="link5" href="hot-stone.html" class="card">
 <span id="card5">Hot Stone Massage — 60 min</span>
 </a>
 
@@ -233,6 +233,10 @@ transform:translateY(0);
 <script>
 function setLang(lang){
 
+// Sauvegarde la langue
+localStorage.setItem("lang", lang);
+
+// FR
 if(lang === "fr"){
 document.getElementById("subtitle").innerText = "Expérience de massage privée";
 document.getElementById("sectionTitle").innerText = "Les soins";
@@ -242,9 +246,17 @@ document.getElementById("card2").innerText = "Massage corps entier — 50 min";
 document.getElementById("card3").innerText = "Rituel complet — 70 min";
 document.getElementById("card4").innerText = "Massage thaï — 60 min";
 document.getElementById("card5").innerText = "Pierres chaudes — 60 min";
-  document.getElementById("mainBtn").innerText = "Envoyer un message";
+
+document.getElementById("mainBtn").innerText = "Envoyer un message";
+
+document.getElementById("link1").href = "semi-massage-fr.html";
+document.getElementById("link2").href = "full-body-fr.html";
+document.getElementById("link3").href = "ritual-fr.html";
+document.getElementById("link4").href = "thai-fr.html";
+document.getElementById("link5").href = "hot-stone-fr.html";
 }
 
+// HE
 if(lang === "he"){
 document.getElementById("subtitle").innerText = "חווית עיסוי פרטית";
 document.getElementById("sectionTitle").innerText = "הטיפולים";
@@ -254,9 +266,17 @@ document.getElementById("card2").innerText = "עיסוי גוף מלא — 50 ד
 document.getElementById("card3").innerText = "טיפול מלא — 70 דקות";
 document.getElementById("card4").innerText = "עיסוי תאילנדי — 60 דקות";
 document.getElementById("card5").innerText = "אבנים חמות — 60 דקות";
-  document.getElementById("mainBtn").innerText = "שלח הודעה";
+
+document.getElementById("mainBtn").innerText = "שלח הודעה";
+
+document.getElementById("link1").href = "semi-massage-he.html";
+document.getElementById("link2").href = "full-body-he.html";
+document.getElementById("link3").href = "ritual-he.html";
+document.getElementById("link4").href = "thai-he.html";
+document.getElementById("link5").href = "hot-stone-he.html";
 }
 
+// EN
 if(lang === "en"){
 document.getElementById("subtitle").innerText = "Private Massage Experience";
 document.getElementById("sectionTitle").innerText = "Your Treatments";
@@ -266,7 +286,22 @@ document.getElementById("card2").innerText = "Full Body Massage — 50 min";
 document.getElementById("card3").innerText = "Complete Ritual — 70 min";
 document.getElementById("card4").innerText = "Thai Massage — 60 min";
 document.getElementById("card5").innerText = "Hot Stone Massage — 60 min";
-  document.getElementById("mainBtn").innerText = "Send message";
+
+document.getElementById("mainBtn").innerText = "Send message";
+
+document.getElementById("link1").href = "semi-massage.html";
+document.getElementById("link2").href = "full-body.html";
+document.getElementById("link3").href = "ritual.html";
+document.getElementById("link4").href = "thai.html";
+document.getElementById("link5").href = "hot-stone.html";
+}
+}
+
+// Recharge la langue automatiquement
+window.onload = function(){
+let savedLang = localStorage.getItem("lang");
+if(savedLang){
+setLang(savedLang);
 }
 }
 </script>
