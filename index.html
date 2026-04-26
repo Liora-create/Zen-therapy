@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zen Therapy</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#f5eee7;
+color:#2c211c;
+}
+
+/* HERO */
+header{
+height:60vh;
+background:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),url('spa.jpg.PNG') center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+text-align:center;
+}
+
+/* SECTION */
+.section{
+padding:40px 20px;
+max-width:800px;
+margin:auto;
+}
+
+/* BANDES (ton design) */
+.band{
+background:#2c211c;
+color:white;
+padding:20px;
+margin:15px 0;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* CONTENU DÉROULÉ */
+.content{
+max-height:0;
+overflow:hidden;
+transition:0.4s;
+background:#fff;
+color:#2c211c;
+padding:0 20px;
+border-radius:0 0 8px 8px;
+}
+
+.content.open{
+max-height:600px;
+padding:20px;
+}
+
+/* BOUTON */
+.btn{
+display:inline-block;
+margin-top:15px;
+padding:12px 22px;
+background:#a67c52;
+color:white;
+border-radius:25px;
+text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Zen Therapy</h1>
+</header>
+
+<div class="section">
+
+<!-- SEMI -->
+<div class="band" onclick="toggle(this)">
+Massage ciblé — 30 min — 100₪
+<div class="content">
+<p>
+Un massage relaxant et ciblé conçu pour libérer les tensions sur deux zones de votre choix.<br><br>
+Idéal pour un moment de détente rapide ou pour soulager une zone spécifique.<br><br>
+Durée : 30 minutes<br>Prix : 100₪
+</p>
+<a href="https://wa.me/972586874252" class="btn">Book an appointment</a>
+</div>
+</div>
+
+<!-- FULL -->
+<div class="band" onclick="toggle(this)">
+Massage corps entier — 50 min — 180₪
+<div class="content">
+<p>
+Un massage complet inspiré des techniques californiennes et suédoises, conçu pour détendre le corps et apaiser l’esprit.<br><br>
+Ce soin aide à relâcher les tensions et à retrouver une sensation de bien-être global.<br><br>
+Durée : 50 minutes<br>Prix : 180₪
+</p>
+<a href="https://wa.me/972586874252" class="btn">Book an appointment</a>
+</div>
+</div>
+
+<!-- RITUAL -->
+<div class="band" onclick="toggle(this)">
+Rituel complet — 70 min — 250₪
+<div class="content">
+<p>
+Une expérience complète de bien-être pour une relaxation profonde du corps et de l’esprit.<br><br>
+Ce rituel inclut un massage complet avec une attention particulière portée au visage et au cuir chevelu,
+pour un relâchement total et une sensation de calme durable.<br><br>
+Durée : 70 minutes<br>Prix : 250₪
+</p>
+<a href="https://wa.me/972586874252" class="btn">Book an appointment</a>
+</div>
+</div>
+
+<!-- THAI -->
+<div class="band" onclick="toggle(this)">
+Massage thaï — 60 min — 300₪
+<div class="content">
+<p>
+Un massage dynamique et énergisant combinant pressions et étirements doux.<br><br>
+Réalisé au sol, il permet un travail profond sur le corps et la souplesse.<br><br>
+Durée : 60 minutes<br>Prix : 300₪
+</p>
+<a href="https://wa.me/972586874252" class="btn">Book an appointment</a>
+</div>
+</div>
+
+<!-- HOT STONE -->
+<div class="band" onclick="toggle(this)">
+Pierres chaudes — 60 min — 300₪
+<div class="content">
+<p>
+Un massage profondément relaxant utilisant des pierres chaudes pour détendre les muscles et libérer les tensions.<br><br>
+La chaleur pénètre profondément et favorise une relaxation intense.<br><br>
+Durée : 60 minutes<br>Prix : 300₪
+</p>
+<a href="https://wa.me/972586874252" class="btn">Book an appointment</a>
+</div>
+</div>
+
+</div>
+
+<script>
+function toggle(el){
+let content = el.querySelector(".content");
+content.classList.toggle("open");
+}
+</script>
+
+</body>
+</html>
