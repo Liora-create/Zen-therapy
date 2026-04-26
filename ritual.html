@@ -1,33 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Complete Ritual | Zen Therapy</title>
+<title id="pageTitle">Rituel complet | Zen Therapy</title>
 
 <style>
-body{
-margin:0;
-font-family: Arial, sans-serif;
-background:#f5eee7;
-color:#2c211c;
-}
-
+body{margin:0;font-family:Arial;background:#f5eee7;color:#2c211c;}
 header{
 height:40vh;
-background:
-linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
-url('spa.jpg.PNG') center/cover no-repeat;
+background:linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)),url('spa.jpg.PNG') center/cover;
 display:flex;
 align-items:center;
 justify-content:center;
 color:white;
+position:relative;
 text-align:center;
 }
 
-header h1{
-font-weight:300;
-letter-spacing:2px;
+.lang-switch{
+position:absolute;
+top:15px;
+right:15px;
+}
+
+.lang-switch button{
+margin:3px;
+padding:5px 10px;
+border:none;
+background:#a67c52;
+color:white;
+border-radius:20px;
+cursor:pointer;
 }
 
 .section{
@@ -40,11 +44,6 @@ max-width:600px;
 margin:auto;
 }
 
-.container p{
-line-height:1.6;
-margin-bottom:30px;
-}
-
 .btn{
 display:inline-block;
 padding:14px 28px;
@@ -52,35 +51,13 @@ border-radius:30px;
 background:#a67c52;
 color:white;
 text-decoration:none;
+margin-top:20px;
 }
 
 .back{
 display:block;
 margin-top:30px;
 color:#a67c52;
-text-decoration:none;
-}
-  /* ANIMATION PAGE */
-
-.content{
-opacity:0;
-transform:translateY(30px);
-animation:fadeUp 1.3s ease forwards;
-}
-
-.content p{
-animation-delay:0.2s;
-}
-
-.content .btn{
-animation-delay:0.4s;
-}
-
-@keyframes fadeUp{
-to{
-opacity:1;
-transform:translateY(0);
-}
 }
 </style>
 </head>
@@ -88,31 +65,77 @@ transform:translateY(0);
 <body>
 
 <header>
-<h1>Complete Ritual — 70 min</h1>
+
+<div class="lang-switch">
+<button onclick="setLang('fr')">FR</button>
+<button onclick="setLang('en')">EN</button>
+<button onclick="setLang('he')">HE</button>
+</div>
+
+<h1 id="title">Rituel complet — 70 min</h1>
+
 </header>
 
 <div class="section">
-<div class="container content">
+<div class="container">
 
-<p>
-A complete wellness experience for total relaxation of body and mind.
-
-This ritual includes a full-body massage with special attention to the face and scalp,
-bringing deep relaxation and a lasting sense of calm.
-
-<br><br>
-Duration: 70 minutes  
-Price: 250₪
+<p id="desc">
+Une expérience complète de bien-être pour une relaxation profonde du corps et de l’esprit.<br><br>
+Ce rituel inclut un massage complet avec une attention particulière portée au visage et au cuir chevelu,
+pour un relâchement total et une sensation de calme durable.<br><br>
+Durée : 70 minutes<br>
+Prix : 250₪
 </p>
 
-<a href="https://wa.me/972586874252?text=Hello,%20I%20would%20like%20to%20book%20the%20Complete%20Ritual%20(70%20min).%20Do%20you%20have%20availability%3F" class="btn">
-Book an appointment
+<a id="bookBtn" href="https://wa.me/972586874252" class="btn">
+Réserver un rendez-vous
 </a>
 
-<a href="index.html" class="back">← Back to treatments</a>
+<a href="index.html" class="back" id="backBtn">← Retour aux soins</a>
 
 </div>
 </div>
+
+<script>
+
+function setLang(lang){
+
+localStorage.setItem("lang", lang);
+
+document.body.style.direction = (lang==="he") ? "rtl" : "ltr";
+
+if(lang==="fr"){
+pageTitle.innerText="Rituel complet | Zen Therapy";
+title.innerText="Rituel complet — 70 min";
+desc.innerHTML="Une expérience complète de bien-être pour une relaxation profonde du corps et de l’esprit.<br><br>Ce rituel inclut un massage complet avec une attention particulière portée au visage et au cuir chevelu, pour un relâchement total et une sensation de calme durable.<br><br>Durée : 70 minutes<br>Prix : 250₪";
+bookBtn.innerText="Réserver un rendez-vous";
+backBtn.innerText="← Retour aux soins";
+}
+
+if(lang==="en"){
+pageTitle.innerText="Complete Ritual | Zen Therapy";
+title.innerText="Complete Ritual — 70 min";
+desc.innerHTML="A complete wellness experience for deep relaxation of body and mind.<br><br>This ritual includes a full-body massage with special attention to the face and scalp, for total release and lasting calm.<br><br>Duration: 70 minutes<br>Price: 250₪";
+bookBtn.innerText="Book appointment";
+backBtn.innerText="← Back to treatments";
+}
+
+if(lang==="he"){
+pageTitle.innerText="טיפול מלא | Zen Therapy";
+title.innerText="טיפול מלא — 70 דקות";
+desc.innerHTML="חוויה מלאה של רוגע לשחרור עמוק של הגוף והנפש.<br><br>הטיפול כולל עיסוי גוף מלא עם דגש על הפנים והקרקפת, לתחושת רוגע עמוקה ומתמשכת.<br><br>משך: 70 דקות<br>מחיר: 250₪";
+bookBtn.innerText="קבעי תור";
+backBtn.innerText="← חזרה לטיפולים";
+}
+
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+let savedLang = localStorage.getItem("lang") || "fr";
+setLang(savedLang);
+});
+
+</script>
 
 </body>
 </html>
