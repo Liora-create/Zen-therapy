@@ -4,9 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zen Therapy | Liora</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
+
 body{
 margin:0;
 font-family: Arial, sans-serif;
@@ -49,6 +51,7 @@ font-size:1.2em;
 opacity:0.9;
 }
 
+/* BUTTON */
 .btn{
 display:inline-block;
 margin-top:20px;
@@ -58,7 +61,7 @@ background:#a67c52;
 color:white;
 text-decoration:none;
 font-size:1em;
-  box-shadow:0 8px 20px rgba(0,0,0,0.2);
+box-shadow:0 8px 20px rgba(0,0,0,0.2);
 }
 
 /* LANG SWITCH */
@@ -102,39 +105,36 @@ margin-bottom:40px;
 letter-spacing:1px;
 color:#3a2a24;
 }
+
 /* GRID */
 .grid{
 display:block;
 width:100%;
-margin:0;
-padding:0;
 }
-/* CARD */
+
+/* CARD FULL WIDTH */
 .card{
 position:relative;
 left:50%;
-right:50%;
 margin-left:-50vw;
-margin-right:-50vw;
 width:100vw;
-
 height:110px;
 margin-bottom:30px;
-
 display:flex;
 align-items:center;
 justify-content:center;
-
 background:var(--card-image) center/cover no-repeat;
 border-radius:0;
 text-decoration:none;
 color:inherit;
 }
+
+/* HOVER */
 .card:hover{
-transform:translateY(-8px) scale(1.02);
-box-shadow:0 18px 40px rgba(0,0,0,0.2);
+transform:scale(1.02);
 }
 
+/* OVERLAY */
 .card::after{
 content:'';
 position:absolute;
@@ -146,35 +146,35 @@ background:rgba(0,0,0,0.25);
 backdrop-filter:blur(2px);
 }
 
+/* TEXT */
 .card span{
 position:relative;
 color:white;
 font-family:'Playfair Display', serif;
-font-size:1.3em;
-letter-spacing:1.5px;
+font-size:1.4em;
+letter-spacing:2px;
 z-index:2;
 text-align:center;
 font-weight:300;
-text-shadow:0 2px 10px rgba(0,0,0,0.4);
+text-shadow:0 4px 20px rgba(0,0,0,0.5);
 text-decoration:none !important;
 }
 
 /* MOBILE */
-@media (max-width: 768px){
+@media (max-width:768px){
 header h1{font-size:2.2em;}
-header{height:100svh;}
-.card{width:90%;}
+.card{height:100px;}
+.card span{
+font-size:1.1em;
+letter-spacing:1px;
+}
 }
 
-/* ANIMATION HERO */
+/* ANIMATION */
 .hero-content{
 opacity:0;
 transform:translateY(40px);
 animation:fadeUp 1.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.hero-content h1{
-text-shadow:0 4px 20px rgba(0,0,0,0.4);
 }
 
 .hero-content p{
@@ -197,6 +197,7 @@ opacity:1;
 transform:translateY(0);
 }
 }
+
 </style>
 </head>
 
@@ -249,76 +250,60 @@ transform:translateY(0);
 <script>
 function setLang(lang){
 
-// Sauvegarde la langue
 localStorage.setItem("lang", lang);
 
-// FR
 if(lang === "fr"){
-document.getElementById("subtitle").innerText = "Expérience de massage privée";
-document.getElementById("sectionTitle").innerText = "Les soins";
-
-document.getElementById("card1").innerText = "Massage ciblé — 30 min";
-document.getElementById("card2").innerText = "Massage corps entier — 50 min";
-document.getElementById("card3").innerText = "Rituel complet — 70 min";
-document.getElementById("card4").innerText = "Massage thaï — 60 min";
-document.getElementById("card5").innerText = "Pierres chaudes — 60 min";
-
-document.getElementById("mainBtn").innerText = "Envoyer un message";
-
-document.getElementById("link1").href = "semi-massage-fr.html";
-document.getElementById("link2").href = "full-body-fr.html";
-document.getElementById("link3").href = "ritual-fr.html";
-document.getElementById("link4").href = "thai-fr.html";
-document.getElementById("link5").href = "hot-stone-fr.html";
+subtitle.innerText = "Expérience de massage privée";
+sectionTitle.innerText = "Les soins";
+card1.innerText = "Massage ciblé — 30 min";
+card2.innerText = "Massage corps entier — 50 min";
+card3.innerText = "Rituel complet — 70 min";
+card4.innerText = "Massage thaï — 60 min";
+card5.innerText = "Pierres chaudes — 60 min";
+mainBtn.innerText = "Envoyer un message";
+link1.href="semi-massage-fr.html";
+link2.href="full-body-fr.html";
+link3.href="ritual-fr.html";
+link4.href="thai-fr.html";
+link5.href="hot-stone-fr.html";
 }
 
-// HE
 if(lang === "he"){
-document.getElementById("subtitle").innerText = "חווית עיסוי פרטית";
-document.getElementById("sectionTitle").innerText = "הטיפולים";
-
-document.getElementById("card1").innerText = "עיסוי חלקי — 30 דקות";
-document.getElementById("card2").innerText = "עיסוי גוף מלא — 50 דקות";
-document.getElementById("card3").innerText = "טיפול מלא — 70 דקות";
-document.getElementById("card4").innerText = "עיסוי תאילנדי — 60 דקות";
-document.getElementById("card5").innerText = "אבנים חמות — 60 דקות";
-
-document.getElementById("mainBtn").innerText = "שלח הודעה";
-
-document.getElementById("link1").href = "semi-massage-he.html";
-document.getElementById("link2").href = "full-body-he.html";
-document.getElementById("link3").href = "ritual-he.html";
-document.getElementById("link4").href = "thai-he.html";
-document.getElementById("link5").href = "hot-stone-he.html";
+subtitle.innerText = "חווית עיסוי פרטית";
+sectionTitle.innerText = "הטיפולים";
+card1.innerText = "עיסוי חלקי — 30 דקות";
+card2.innerText = "עיסוי גוף מלא — 50 דקות";
+card3.innerText = "טיפול מלא — 70 דקות";
+card4.innerText = "עיסוי תאילנדי — 60 דקות";
+card5.innerText = "אבנים חמות — 60 דקות";
+mainBtn.innerText = "שלח הודעה";
+link1.href="semi-massage-he.html";
+link2.href="full-body-he.html";
+link3.href="ritual-he.html";
+link4.href="thai-he.html";
+link5.href="hot-stone-he.html";
 }
 
-// EN
 if(lang === "en"){
-document.getElementById("subtitle").innerText = "Private Massage Experience";
-document.getElementById("sectionTitle").innerText = "Your Treatments";
-
-document.getElementById("card1").innerText = "Semi Massage — 30 min";
-document.getElementById("card2").innerText = "Full Body Massage — 50 min";
-document.getElementById("card3").innerText = "Complete Ritual — 70 min";
-document.getElementById("card4").innerText = "Thai Massage — 60 min";
-document.getElementById("card5").innerText = "Hot Stone Massage — 60 min";
-
-document.getElementById("mainBtn").innerText = "Send message";
-
-document.getElementById("link1").href = "semi-massage.html";
-document.getElementById("link2").href = "full-body.html";
-document.getElementById("link3").href = "ritual.html";
-document.getElementById("link4").href = "thai.html";
-document.getElementById("link5").href = "hot-stone.html";
+subtitle.innerText = "Private Massage Experience";
+sectionTitle.innerText = "Your Treatments";
+card1.innerText = "Semi Massage — 30 min";
+card2.innerText = "Full Body Massage — 50 min";
+card3.innerText = "Complete Ritual — 70 min";
+card4.innerText = "Thai Massage — 60 min";
+card5.innerText = "Hot Stone Massage — 60 min";
+mainBtn.innerText = "Send message";
+link1.href="semi-massage.html";
+link2.href="full-body.html";
+link3.href="ritual.html";
+link4.href="thai.html";
+link5.href="hot-stone.html";
 }
 }
 
-// Recharge la langue automatiquement
 window.onload = function(){
 let savedLang = localStorage.getItem("lang");
-if(savedLang){
-setLang(savedLang);
-}
+if(savedLang){setLang(savedLang);}
 }
 </script>
 
