@@ -1,33 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Full Body Massage | Zen Therapy</title>
+<title id="pageTitle">Massage corps entier | Zen Therapy</title>
 
 <style>
-body{
-margin:0;
-font-family: Arial, sans-serif;
-background:#f5eee7;
-color:#2c211c;
-}
-
+body{margin:0;font-family:Arial;background:#f5eee7;color:#2c211c;}
 header{
 height:40vh;
-background:
-linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
-url('spa.jpg.PNG') center/cover no-repeat;
+background:linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)),url('spa.jpg.PNG') center/cover;
 display:flex;
 align-items:center;
 justify-content:center;
 color:white;
+position:relative;
 text-align:center;
 }
 
-header h1{
-font-weight:300;
-letter-spacing:2px;
+.lang-switch{
+position:absolute;
+top:15px;
+right:15px;
+}
+
+.lang-switch button{
+margin:3px;
+padding:5px 10px;
+border:none;
+background:#a67c52;
+color:white;
+border-radius:20px;
+cursor:pointer;
 }
 
 .section{
@@ -40,11 +44,6 @@ max-width:600px;
 margin:auto;
 }
 
-.container p{
-line-height:1.6;
-margin-bottom:30px;
-}
-
 .btn{
 display:inline-block;
 padding:14px 28px;
@@ -52,35 +51,13 @@ border-radius:30px;
 background:#a67c52;
 color:white;
 text-decoration:none;
+margin-top:20px;
 }
 
 .back{
 display:block;
 margin-top:30px;
 color:#a67c52;
-text-decoration:none;
-}
-  /* ANIMATION PAGE */
-
-.content{
-opacity:0;
-transform:translateY(30px);
-animation:fadeUp 1.3s ease forwards;
-}
-
-.content p{
-animation-delay:0.2s;
-}
-
-.content .btn{
-animation-delay:0.4s;
-}
-
-@keyframes fadeUp{
-to{
-opacity:1;
-transform:translateY(0);
-}
 }
 </style>
 </head>
@@ -88,31 +65,76 @@ transform:translateY(0);
 <body>
 
 <header>
-<h1>Full Body Massage — 50 min</h1>
+
+<div class="lang-switch">
+<button onclick="setLang('fr')">FR</button>
+<button onclick="setLang('en')">EN</button>
+<button onclick="setLang('he')">HE</button>
+</div>
+
+<h1 id="title">Massage corps entier — 50 min</h1>
+
 </header>
 
 <div class="section">
-<div class="container content">
+<div class="container">
 
-<p>
-A soothing full-body massage inspired by Californian and Swedish techniques,
-designed to relax the body and calm the mind.
-
-This treatment focuses on releasing tension and improving overall well-being.
-
-<br><br>
-Duration: 50 minutes  
-Price: 180₪
+<p id="desc">
+Un massage complet inspiré des techniques californiennes et suédoises, conçu pour détendre le corps et apaiser l’esprit.<br><br>
+Ce soin aide à relâcher les tensions et à retrouver une sensation de bien-être global.<br><br>
+Durée : 50 minutes<br>
+Prix : 180₪
 </p>
 
-<a href="https://wa.me/972586874252?text=Hello,%20I%20would%20like%20to%20book%20a%20Full%20Body%20Massage%20(50%20min).%20Do%20you%20have%20availability%3F" class="btn">
-Book an appointment
+<a id="bookBtn" href="https://wa.me/972586874252" class="btn">
+Réserver un rendez-vous
 </a>
 
-<a href="index.html" class="back">← Back to treatments</a>
+<a href="index.html" class="back" id="backBtn">← Retour aux soins</a>
 
 </div>
 </div>
+
+<script>
+
+function setLang(lang){
+
+localStorage.setItem("lang", lang);
+
+document.body.style.direction = (lang==="he") ? "rtl" : "ltr";
+
+if(lang==="fr"){
+pageTitle.innerText="Massage corps entier | Zen Therapy";
+title.innerText="Massage corps entier — 50 min";
+desc.innerHTML="Un massage complet inspiré des techniques californiennes et suédoises, conçu pour détendre le corps et apaiser l’esprit.<br><br>Ce soin aide à relâcher les tensions et à retrouver une sensation de bien-être global.<br><br>Durée : 50 minutes<br>Prix : 180₪";
+bookBtn.innerText="Réserver un rendez-vous";
+backBtn.innerText="← Retour aux soins";
+}
+
+if(lang==="en"){
+pageTitle.innerText="Full Body Massage | Zen Therapy";
+title.innerText="Full Body Massage — 50 min";
+desc.innerHTML="A complete massage inspired by Californian and Swedish techniques, designed to relax the body and calm the mind.<br><br>This treatment helps release tension and restore a deep sense of well-being.<br><br>Duration: 50 minutes<br>Price: 180₪";
+bookBtn.innerText="Book appointment";
+backBtn.innerText="← Back to treatments";
+}
+
+if(lang==="he"){
+pageTitle.innerText="עיסוי גוף מלא | Zen Therapy";
+title.innerText="עיסוי גוף מלא — 50 דקות";
+desc.innerHTML="עיסוי מלא בהשראת טכניקות קליפורניות ושוודיות, נועד להרגיע את הגוף והנפש.<br><br>הטיפול משחרר מתחים ומעניק תחושת רוגע עמוקה.<br><br>משך: 50 דקות<br>מחיר: 180₪";
+bookBtn.innerText="קבעי תור";
+backBtn.innerText="← חזרה לטיפולים";
+}
+
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+let savedLang = localStorage.getItem("lang") || "fr";
+setLang(savedLang);
+});
+
+</script>
 
 </body>
 </html>
