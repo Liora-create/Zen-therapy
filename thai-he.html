@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="he">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>עיסוי תאילנדי | Zen Therapy</title>
+<title id="pageTitle">Thai Massage | Zen Therapy</title>
 
 <style>
 body{
@@ -11,7 +11,7 @@ margin:0;
 font-family: Arial, sans-serif;
 background:#f5eee7;
 color:#2c211c;
-direction:rtl;
+direction:ltr;
 }
 
 header{
@@ -24,6 +24,7 @@ align-items:center;
 justify-content:center;
 color:white;
 text-align:center;
+position:relative;
 }
 
 header h1{
@@ -31,6 +32,24 @@ font-weight:300;
 letter-spacing:2px;
 }
 
+/* LANG */
+.lang-switch{
+position:absolute;
+top:15px;
+right:15px;
+}
+
+.lang-switch button{
+margin:3px;
+padding:5px 10px;
+border:none;
+background:#a67c52;
+color:white;
+border-radius:20px;
+cursor:pointer;
+}
+
+/* SECTION */
 .section{
 padding:60px 20px;
 text-align:center;
@@ -68,14 +87,6 @@ transform:translateY(30px);
 animation:fadeUp 1.3s ease forwards;
 }
 
-.content p{
-animation-delay:0.2s;
-}
-
-.content .btn{
-animation-delay:0.4s;
-}
-
 @keyframes fadeUp{
 to{
 opacity:1;
@@ -88,30 +99,100 @@ transform:translateY(0);
 <body>
 
 <header>
-<h1>עיסוי תאילנדי — 60 דקות</h1>
+
+<div class="lang-switch">
+<button onclick="setLang('en')">EN</button>
+<button onclick="setLang('fr')">FR</button>
+<button onclick="setLang('he')">HE</button>
+</div>
+
+<h1 id="title">Thai Massage — 60 min</h1>
+
 </header>
 
 <div class="section">
 <div class="container content">
 
-<p>
-עיסוי דינמי ואנרגטי המשלב לחיצות ומתיחות עדינות.
-
-מתאים לשיפור הגמישות, שחרור מתחים עמוקים ואיזון הגוף.
-
-<br><br>
-משך הטיפול: 60 דקות  
-מחיר: 250₪
+<p id="desc">
+A dynamic and energizing massage combining pressure and gentle stretching.<br><br>
+Performed on the floor, this treatment works deeply on flexibility and body balance.<br><br>
+Ideal for improving mobility, releasing deep tension and restoring energy flow.<br><br>
+Duration: 60 minutes<br>
+Price: 300₪
 </p>
 
-<a href="https://wa.me/972586874252?text=שלום,%20אני%20מעוניינת%20לקבוע%20עיסוי%20תאילנדי%20(60%20דקות).%20האם%20יש%20לך%20זמינות%3F" class="btn">
-קביעת תור
+<a id="bookBtn" href="https://wa.me/972586874252" class="btn">
+Book appointment
 </a>
 
-<a href="index.html" class="back">← חזרה לטיפולים</a>
+<a href="index.html" class="back" id="backBtn">← Back to treatments</a>
 
 </div>
 </div>
+
+<script>
+
+function setLang(lang){
+
+localStorage.setItem("lang", lang);
+
+/* direction */
+if(lang==="he"){
+document.body.style.direction="rtl";
+}else{
+document.body.style.direction="ltr";
+}
+
+/* FR */
+if(lang==="fr"){
+pageTitle.innerText="Massage thaï | Zen Therapy";
+title.innerText="Massage thaï — 60 min";
+
+desc.innerHTML="Un massage dynamique et énergisant combinant pressions et étirements doux.<br><br>Réalisé au sol, il permet un travail profond sur le corps et la souplesse.<br><br>Idéal pour améliorer la mobilité, libérer les tensions profondes et rééquilibrer le corps.<br><br>Durée : 60 minutes<br>Prix : 300₪";
+
+bookBtn.innerText="Réserver un rendez-vous";
+bookBtn.href="https://wa.me/972586874252?text=Bonjour,%20je%20souhaite%20réserver%20un%20massage%20thaï%20(60%20min).";
+
+backBtn.innerText="← Retour aux soins";
+}
+
+/* HE */
+if(lang==="he"){
+pageTitle.innerText="עיסוי תאילנדי | Zen Therapy";
+title.innerText="עיסוי תאילנדי — 60 דקות";
+
+desc.innerHTML="עיסוי דינמי ואנרגטי המשלב לחיצות ומתיחות עדינות.<br><br>הטיפול מתבצע על מזרן ומאפשר עבודה עמוקה על הגוף והגמישות.<br><br>מתאים לשיפור הגמישות, שחרור מתחים עמוקים ואיזון הגוף.<br><br>משך: 60 דקות<br>מחיר: 300₪";
+
+bookBtn.innerText="קבעי תור";
+bookBtn.href="https://wa.me/972586874252?text=שלום,%20אני%20רוצה%20לקבוע%20עיסוי%20תאילנדי%20(60%20דקות).";
+
+backBtn.innerText="← חזרה לטיפולים";
+}
+
+/* EN */
+if(lang==="en"){
+pageTitle.innerText="Thai Massage | Zen Therapy";
+title.innerText="Thai Massage — 60 min";
+
+desc.innerHTML="A dynamic and energizing massage combining pressure and gentle stretching.<br><br>Performed on the floor, this treatment works deeply on flexibility and body balance.<br><br>Ideal for improving mobility, releasing deep tension and restoring energy flow.<br><br>Duration: 60 minutes<br>Price: 300₪";
+
+bookBtn.innerText="Book appointment";
+bookBtn.href="https://wa.me/972586874252?text=Hello,%20I%20would%20like%20to%20book%20a%20Thai%20massage%20(60%20min).";
+
+backBtn.innerText="← Back to treatments";
+}
+
+}
+
+/* auto */
+window.onload = function(){
+let savedLang = localStorage.getItem("lang");
+if(savedLang){
+setLang(savedLang);
+}
+}
+
+</script>
 
 </body>
 </html>
