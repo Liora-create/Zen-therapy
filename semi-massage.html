@@ -7,64 +7,133 @@
 
 <style>
 body{margin:0;font-family:Arial;background:#f5eee7;color:#2c211c;}
-header{height:40vh;background:linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)),url('spa.jpg.PNG') center/cover;display:flex;align-items:center;justify-content:center;color:white;position:relative;}
-.lang-switch{position:absolute;top:15px;right:15px;}
-.lang-switch button{margin:3px;padding:6px 10px;border:none;background:#a67c52;color:white;border-radius:20px;}
-.section{padding:60px;text-align:center;}
+header{
+height:40vh;
+background:linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)),url('spa.jpg.PNG') center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+position:relative;
+text-align:center;
+}
+
+.lang-switch{
+position:absolute;
+top:15px;
+right:15px;
+}
+
+.lang-switch button{
+margin:3px;
+padding:5px 10px;
+border:none;
+background:#a67c52;
+color:white;
+border-radius:20px;
+cursor:pointer;
+}
+
+.section{
+padding:60px 20px;
+text-align:center;
+}
+
+.container{
+max-width:600px;
+margin:auto;
+}
+
+.btn{
+display:inline-block;
+padding:14px 28px;
+border-radius:30px;
+background:#a67c52;
+color:white;
+text-decoration:none;
+margin-top:20px;
+}
+
+.back{
+display:block;
+margin-top:30px;
+color:#a67c52;
+}
 </style>
 </head>
 
 <body>
 
 <header>
+
 <div class="lang-switch">
 <button onclick="setLang('fr')">FR</button>
 <button onclick="setLang('en')">EN</button>
 <button onclick="setLang('he')">HE</button>
 </div>
+
 <h1 id="title">Massage ciblé — 30 min</h1>
+
 </header>
 
 <div class="section">
+<div class="container">
+
 <p id="desc">
 Un massage relaxant et ciblé conçu pour libérer les tensions sur deux zones de votre choix.<br><br>
-Durée : 30 minutes — Prix : 100₪
+Idéal pour un moment de détente rapide ou pour soulager une zone spécifique.<br><br>
+Durée : 30 minutes<br>
+Prix : 100₪
 </p>
 
-<a id="book" href="https://wa.me/972586874252">Réserver</a><br><br>
-<a href="index.html" id="back">← Retour aux soins</a>
+<a id="bookBtn" href="https://wa.me/972586874252" class="btn">
+Réserver un rendez-vous
+</a>
+
+<a href="index.html" class="back" id="backBtn">← Retour aux soins</a>
+
+</div>
 </div>
 
 <script>
+
 function setLang(lang){
-localStorage.setItem("lang",lang);
-document.body.style.direction = (lang==="he")?"rtl":"ltr";
+
+localStorage.setItem("lang", lang);
+
+document.body.style.direction = (lang==="he") ? "rtl" : "ltr";
 
 if(lang==="fr"){
+pageTitle.innerText="Massage ciblé | Zen Therapy";
 title.innerText="Massage ciblé — 30 min";
-desc.innerHTML="Un massage relaxant et ciblé conçu pour libérer les tensions sur deux zones de votre choix.<br><br>Durée : 30 minutes — Prix : 100₪";
-book.innerText="Réserver";
-back.innerText="← Retour aux soins";
+desc.innerHTML="Un massage relaxant et ciblé conçu pour libérer les tensions sur deux zones de votre choix.<br><br>Idéal pour un moment de détente rapide ou pour soulager une zone spécifique.<br><br>Durée : 30 minutes<br>Prix : 100₪";
+bookBtn.innerText="Réserver un rendez-vous";
+backBtn.innerText="← Retour aux soins";
 }
 
 if(lang==="en"){
+pageTitle.innerText="Semi Massage | Zen Therapy";
 title.innerText="Semi Massage — 30 min";
-desc.innerHTML="A relaxing targeted massage designed to release tension.<br><br>Duration: 30 min — Price: 100₪";
-book.innerText="Book appointment";
-back.innerText="← Back to treatments";
+desc.innerHTML="A relaxing and targeted massage designed to release tension in two areas of your choice.<br><br>Ideal for a quick moment of relaxation or to relieve a specific area.<br><br>Duration: 30 minutes<br>Price: 100₪";
+bookBtn.innerText="Book appointment";
+backBtn.innerText="← Back to treatments";
 }
 
 if(lang==="he"){
+pageTitle.innerText="עיסוי חלקי | Zen Therapy";
 title.innerText="עיסוי חלקי — 30 דקות";
-desc.innerHTML="עיסוי ממוקד לשחרור מתחים.<br><br>משך: 30 דקות — מחיר: 100₪";
-book.innerText="קבעי תור";
-back.innerText="← חזרה לטיפולים";
-}
+desc.innerHTML="עיסוי ממוקד ומרגיע לשחרור מתחים בשני אזורים לבחירתך.<br><br>מתאים לרגע של רוגע או להקלה על אזור ספציפי בגוף.<br><br>משך: 30 דקות<br>מחיר: 100₪";
+bookBtn.innerText="קבעי תור";
+backBtn.innerText="← חזרה לטיפולים";
 }
 
-document.addEventListener("DOMContentLoaded",()=>{
-setLang(localStorage.getItem("lang")||"fr");
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+let savedLang = localStorage.getItem("lang") || "fr";
+setLang(savedLang);
 });
+
 </script>
 
 </body>
