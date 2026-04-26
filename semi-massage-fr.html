@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Massage ciblé | Zen Therapy</title>
+<title id="pageTitle">Semi Massage | Zen Therapy</title>
 
 <style>
 body{
@@ -23,11 +23,28 @@ align-items:center;
 justify-content:center;
 color:white;
 text-align:center;
+position:relative;
 }
 
 header h1{
 font-weight:300;
 letter-spacing:2px;
+}
+
+.lang-switch{
+position:absolute;
+top:15px;
+right:15px;
+}
+
+.lang-switch button{
+margin:3px;
+padding:5px 10px;
+border:none;
+background:#a67c52;
+color:white;
+border-radius:20px;
+cursor:pointer;
 }
 
 .section{
@@ -67,14 +84,6 @@ transform:translateY(30px);
 animation:fadeUp 1.3s ease forwards;
 }
 
-.content p{
-animation-delay:0.2s;
-}
-
-.content .btn{
-animation-delay:0.4s;
-}
-
 @keyframes fadeUp{
 to{
 opacity:1;
@@ -87,31 +96,98 @@ transform:translateY(0);
 <body>
 
 <header>
-<h1>Massage ciblé — 30 min</h1>
+
+<div class="lang-switch">
+<button onclick="setLang('en')">EN</button>
+<button onclick="setLang('fr')">FR</button>
+<button onclick="setLang('he')">HE</button>
+</div>
+
+<h1 id="title">Semi Massage — 30 min</h1>
+
 </header>
 
 <div class="section">
 <div class="container content">
 
-<p>
-Un massage relaxant et ciblé conçu pour libérer les tensions
-sur deux zones de votre choix.
+<p id="desc">
+A relaxing and targeted massage designed to release tension
+in two areas of your choice.
 
-Idéal pour un moment de détente rapide ou pour soulager une zone spécifique.
+Ideal for a quick moment of relaxation or to relieve a specific area.
 
 <br><br>
-Durée : 30 minutes  
-Prix : 100₪
+Duration: 30 minutes  
+Price: 100₪
 </p>
 
-<a href="https://wa.me/972586874252?text=Bonjour,%20je%20souhaite%20réserver%20un%20massage%20ciblé%20(30%20min).%20Avez-vous%20des%20disponibilités%20dans%20les%20prochains%20jours%20%3F" class="btn">
-Réserver un rendez-vous
+<a id="bookBtn" href="https://wa.me/972586874252" class="btn">
+Book appointment
 </a>
 
-<a href="index.html" class="back">← Retour aux soins</a>
+<a href="index.html" class="back" id="backBtn">← Back to treatments</a>
 
 </div>
 </div>
+
+<script>
+
+function setLang(lang){
+
+localStorage.setItem("lang", lang);
+
+// FR
+if(lang==="fr"){
+document.getElementById("pageTitle").innerText="Massage ciblé | Zen Therapy";
+document.getElementById("title").innerText="Massage ciblé — 30 min";
+
+document.getElementById("desc").innerHTML=
+"Un massage relaxant et ciblé conçu pour libérer les tensions<br>sur deux zones de votre choix.<br><br>Idéal pour un moment de détente rapide ou pour soulager une zone spécifique.<br><br>Durée : 30 minutes<br>Prix : 100₪";
+
+document.getElementById("bookBtn").innerText="Réserver un rendez-vous";
+document.getElementById("bookBtn").href="https://wa.me/972586874252?text=Bonjour,%20je%20souhaite%20réserver%20un%20massage%20ciblé%20(30%20min).%20Avez-vous%20des%20disponibilités%20%3F";
+
+document.getElementById("backBtn").innerText="← Retour aux soins";
+}
+
+// HE
+if(lang==="he"){
+document.getElementById("pageTitle").innerText="עיסוי חלקי | Zen Therapy";
+document.getElementById("title").innerText="עיסוי חלקי — 30 דקות";
+
+document.getElementById("desc").innerHTML=
+"עיסוי ממוקד ומרגיע לשחרור מתחים בשני אזורים לבחירתך.<br><br>מושלם להפסקה קצרה של רוגע או להקלה באזור מסוים.<br><br>משך: 30 דקות<br>מחיר: 100₪";
+
+document.getElementById("bookBtn").innerText="קבעי תור";
+document.getElementById("bookBtn").href="https://wa.me/972586874252?text=שלום,%20אני%20רוצה%20לקבוע%20עיסוי%20חלקי%20(30%20דקות).";
+
+document.getElementById("backBtn").innerText="← חזרה לטיפולים";
+}
+
+// EN
+if(lang==="en"){
+document.getElementById("pageTitle").innerText="Semi Massage | Zen Therapy";
+document.getElementById("title").innerText="Semi Massage — 30 min";
+
+document.getElementById("desc").innerHTML=
+"A relaxing and targeted massage designed to release tension in two areas of your choice.<br><br>Ideal for a quick moment of relaxation or to relieve a specific area.<br><br>Duration: 30 minutes<br>Price: 100₪";
+
+document.getElementById("bookBtn").innerText="Book appointment";
+document.getElementById("bookBtn").href="https://wa.me/972586874252?text=Hello,%20I%20would%20like%20to%20book%20a%20semi%20massage%20(30%20min).";
+
+document.getElementById("backBtn").innerText="← Back to treatments";
+}
+}
+
+// AUTO LOAD LANG
+window.onload = function(){
+let savedLang = localStorage.getItem("lang");
+if(savedLang){
+setLang(savedLang);
+}
+}
+
+</script>
 
 </body>
 </html>
