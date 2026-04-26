@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zen Therapy</title>
+
+<style>
+
+/* ===== BACKGROUND LUXE ===== */
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(to bottom,#1f1915,#3a2e24,#6d533f,#b79a7a);
+color:white;
+}
+
+/* ===== HERO ===== */
+header{
+height:100vh;
+background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('spa.jpg.PNG') center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+position:relative;
+}
+
+.lang-switch{
+position:absolute;
+top:20px;
+right:20px;
+}
+
+.lang-switch button{
+margin:3px;
+padding:6px 12px;
+background:#a67c52;
+color:white;
+border:none;
+border-radius:20px;
+cursor:pointer;
+}
+
+/* ===== SECTION ===== */
+.section{
+padding:40px 20px;
+max-width:800px;
+margin:auto;
+}
+
+/* ===== BANDES ===== */
+.band{
+background:rgba(0,0,0,0.65);
+padding:20px;
+margin:15px 0;
+border-radius:12px;
+cursor:pointer;
+}
+
+.content{
+max-height:0;
+overflow:hidden;
+transition:0.4s;
+background:rgba(255,255,255,0.08);
+padding:0 20px;
+border-radius:0 0 12px 12px;
+}
+
+.content.open{
+max-height:800px;
+padding:20px;
+}
+
+/* ===== BUTTON ===== */
+.btn{
+display:inline-block;
+margin-top:15px;
+padding:12px 24px;
+background:#a67c52;
+color:white;
+border-radius:25px;
+text-decoration:none;
+}
+
+/* ===== REVIEWS ===== */
+.review{
+background:rgba(255,255,255,0.1);
+padding:15px;
+margin:10px 0;
+border-radius:10px;
+}
+
+.stars{
+color:#f4c542;
+font-size:18px;
+}
+
+/* ===== FORM ===== */
+input, textarea{
+width:100%;
+padding:10px;
+margin:8px 0;
+border-radius:8px;
+border:none;
+}
+
+/* ===== FOOTER ===== */
+.footer{
+text-align:center;
+padding:40px 20px;
+opacity:0.9;
+}
+
+.footer a{
+color:#f4c542;
+text-decoration:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="lang-switch">
+<button onclick="setLang('en')">EN</button>
+<button onclick="setLang('fr')">FR</button>
+<button onclick="setLang('he')">HE</button>
+</div>
+
+<div>
+<h1 id="heroTitle"></h1>
+<p id="heroSub"></p>
+<a id="heroBtn" href="https://wa.me/972586874252" class="btn"></a>
+</div>
+
+</header>
+
+<div class="section">
+
+<div class="band" onclick="toggle(this)">
+<div id="semiTitle"></div>
+<div class="content">
+<p id="semiText"></p>
+<a class="btn" id="semiBtn" href="https://wa.me/972586874252"></a>
+</div>
+</div>
+
+<div class="band" onclick="toggle(this)">
+<div id="fullTitle"></div>
+<div class="content">
+<p id="fullText"></p>
+<a class="btn" id="fullBtn" href="https://wa.me/972586874252"></a>
+</div>
+</div>
+
+<div class="band" onclick="toggle(this)">
+<div id="ritualTitle"></div>
+<div class="content">
+<p id="ritualText"></p>
+<a class="btn" id="ritualBtn" href="https://wa.me/972586874252"></a>
+</div>
+</div>
+
+<div class="band" onclick="toggle(this)">
+<div id="thaiTitle"></div>
+<div class="content">
+<p id="thaiText"></p>
+<a class="btn" id="thaiBtn" href="https://wa.me/972586874252"></a>
+</div>
+</div>
+
+<div class="band" onclick="toggle(this)">
+<div id="stoneTitle"></div>
+<div class="content">
+<p id="stoneText"></p>
+<a class="btn" id="stoneBtn" href="https://wa.me/972586874252"></a>
+</div>
+</div>
+
+</div>
+
+<!-- ===== REVIEWS ===== -->
+<div class="section">
+<h2>Client Reviews</h2>
+
+<div class="review">
+<div class="stars">★★★★★</div>
+<p>Amazing massage, I felt completely relaxed.</p>
+<strong>Sarah</strong>
+</div>
+
+<div class="review">
+<div class="stars">★★★★★</div>
+<p>Very professional and calming experience.</p>
+<strong>Lea</strong>
+</div>
+
+</div>
+
+<!-- ===== FORM ===== -->
+<div class="section">
+<h2>Leave a review</h2>
+
+<input id="name" placeholder="Your name">
+<input id="stars" placeholder="Stars (1-5)">
+<textarea id="message" placeholder="Your message"></textarea>
+
+<button class="btn" onclick="sendReview()">Send</button>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<div class="footer">
+<p><strong>Liora</strong></p>
+<p>📍 Paris</p>
+<p>
+<a href="https://instagram.com/zen_therapy_liora" target="_blank">
+@zen_therapy_liora
+</a>
+</p>
+</div>
+
+<script>
+
+function toggle(el){
+el.querySelector(".content").classList.toggle("open");
+}
+
+function sendReview(){
+let name=document.getElementById("name").value;
+let stars=document.getElementById("stars").value;
+let msg=document.getElementById("message").value;
+
+let text=`Review:%0AName: ${name}%0AStars: ${stars}%0AMessage: ${msg}`;
+window.open(`https://wa.me/972586874252?text=${text}`);
+}
+
+function setLang(lang){
+
+localStorage.setItem("lang",lang);
+document.body.style.direction=(lang==="he")?"rtl":"ltr";
+
+/* ===== EN ===== */
+if(lang==="en"){
+heroTitle.innerText="Relaxation & Wellness";
+heroSub.innerText="A moment just for you";
+heroBtn.innerText="Send message";
+
+semiTitle.innerText="Targeted Massage — 30 min — 100₪";
+semiText.innerText="Massage on two areas of your choice.";
+semiBtn.innerText="Book";
+
+fullTitle.innerText="Full Body Massage — 50 min — 180₪";
+fullText.innerText="Complete relaxation massage.";
+fullBtn.innerText="Book";
+
+ritualTitle.innerText="Complete Ritual — 70 min — 250₪";
+ritualText.innerText="Includes body, face and scalp.";
+ritualBtn.innerText="Book";
+
+thaiTitle.innerText="Thai Massage — 60 min — 300₪";
+thaiText.innerText="Deep floor massage with stretching.";
+thaiBtn.innerText="Book";
+
+stoneTitle.innerText="Hot Stone — 60 min — 300₪";
+stoneText.innerText="Relaxing hot stone massage.";
+stoneBtn.innerText="Book";
+}
+
+/* ===== FR ===== */
+if(lang==="fr"){
+heroTitle.innerText="Relaxation & Bien-être";
+heroSub.innerText="Un moment pour vous";
+heroBtn.innerText="Envoyer un message";
+
+semiTitle.innerText="Massage ciblé — 30 min — 100₪";
+semiText.innerText="Massage sur deux zones au choix.";
+semiBtn.innerText="Réserver";
+
+fullTitle.innerText="Massage corps entier — 50 min — 180₪";
+fullText.innerText="Massage complet relaxant.";
+fullBtn.innerText="Réserver";
+
+ritualTitle.innerText="Rituel complet — 70 min — 250₪";
+ritualText.innerText="Corps, visage et cuir chevelu.";
+ritualBtn.innerText="Réserver";
+
+thaiTitle.innerText="Massage thaï — 60 min — 300₪";
+thaiText.innerText="Massage au sol profond.";
+thaiBtn.innerText="Réserver";
+
+stoneTitle.innerText="Pierres chaudes — 60 min — 300₪";
+stoneText.innerText="Massage relaxant aux pierres chaudes.";
+stoneBtn.innerText="Réserver";
+}
+
+/* ===== HE ===== */
+if(lang==="he"){
+heroTitle.innerText="רוגע ושלווה";
+heroSub.innerText="רגע לעצמך";
+heroBtn.innerText="שלחי הודעה";
+
+semiTitle.innerText="עיסוי ממוקד — 30 דקות";
+semiText.innerText="שני אזורים לבחירה.";
+semiBtn.innerText="קבעי תור";
+
+fullTitle.innerText="עיסוי גוף מלא — 50 דקות";
+fullText.innerText="עיסוי מלא מרגיע.";
+fullBtn.innerText="קבעי תור";
+
+ritualTitle.innerText="טיפול מלא — 70 דקות";
+ritualText.innerText="כולל פנים וקרקפת.";
+ritualBtn.innerText="קבעי תור";
+
+thaiTitle.innerText="עיסוי תאילנדי — 60 דקות";
+thaiText.innerText="עיסוי עמוק על מזרן.";
+thaiBtn.innerText="קבעי תור";
+
+stoneTitle.innerText="אבנים חמות — 60 דקות";
+stoneText.innerText="עיסוי מרגיע.";
+stoneBtn.innerText="קבעי תור";
+}
+
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+setLang(localStorage.getItem("lang") || "en");
+});
+
+</script>
+
+</body>
+</html>
