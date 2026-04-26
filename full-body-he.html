@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="he">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>עיסוי גוף מלא | Zen Therapy</title>
+<title id="pageTitle">Full Body Massage | Zen Therapy</title>
 
 <style>
 body{
@@ -11,7 +11,7 @@ margin:0;
 font-family: Arial, sans-serif;
 background:#f5eee7;
 color:#2c211c;
-direction:rtl;
+direction:ltr;
 }
 
 header{
@@ -24,6 +24,7 @@ align-items:center;
 justify-content:center;
 color:white;
 text-align:center;
+position:relative;
 }
 
 header h1{
@@ -31,6 +32,24 @@ font-weight:300;
 letter-spacing:2px;
 }
 
+/* LANG SWITCH */
+.lang-switch{
+position:absolute;
+top:15px;
+right:15px;
+}
+
+.lang-switch button{
+margin:3px;
+padding:5px 10px;
+border:none;
+background:#a67c52;
+color:white;
+border-radius:20px;
+cursor:pointer;
+}
+
+/* SECTION */
 .section{
 padding:60px 20px;
 text-align:center;
@@ -68,14 +87,6 @@ transform:translateY(30px);
 animation:fadeUp 1.3s ease forwards;
 }
 
-.content p{
-animation-delay:0.2s;
-}
-
-.content .btn{
-animation-delay:0.4s;
-}
-
 @keyframes fadeUp{
 to{
 opacity:1;
@@ -88,31 +99,100 @@ transform:translateY(0);
 <body>
 
 <header>
-<h1>עיסוי גוף מלא — 50 דקות</h1>
+
+<div class="lang-switch">
+<button onclick="setLang('en')">EN</button>
+<button onclick="setLang('fr')">FR</button>
+<button onclick="setLang('he')">HE</button>
+</div>
+
+<h1 id="title">Full Body Massage — 50 min</h1>
+
 </header>
 
 <div class="section">
 <div class="container content">
 
-<p>
-עיסוי מלא לגוף בהשראת טכניקות קליפורניות ושוודיות,
-המיועד להרפיית הגוף והנפש.
-
-הטיפול מסייע לשחרור מתחים ולהחזרת תחושת רוגע ואיזון.
-
-<br><br>
-משך הטיפול: 50 דקות  
-מחיר: 180₪
+<p id="desc">
+A complete massage inspired by Californian and Swedish techniques,<br>
+designed to relax the body and calm the mind.<br><br>
+This treatment helps release tension and restore a deep sense of well-being.<br><br>
+Duration: 50 minutes<br>
+Price: 180₪
 </p>
 
-<a href="https://wa.me/972586874252?text=שלום,%20אני%20מעוניינת%20לקבוע%20עיסוי%20גוף%20מלא%20(50%20דקות).%20האם%20יש%20לך%20זמינות%3F" class="btn">
-קביעת תור
+<a id="bookBtn" href="https://wa.me/972586874252" class="btn">
+Book appointment
 </a>
 
-<a href="index.html" class="back">← חזרה לטיפולים</a>
+<a href="index.html" class="back" id="backBtn">← Back to treatments</a>
 
 </div>
 </div>
+
+<script>
+
+function setLang(lang){
+
+localStorage.setItem("lang", lang);
+
+/* DIRECTION */
+if(lang==="he"){
+document.body.style.direction="rtl";
+}else{
+document.body.style.direction="ltr";
+}
+
+/* FR */
+if(lang==="fr"){
+pageTitle.innerText="Massage corps entier | Zen Therapy";
+title.innerText="Massage corps entier — 50 min";
+
+desc.innerHTML="Un massage complet inspiré des techniques californiennes et suédoises,<br>conçu pour détendre le corps et apaiser l’esprit.<br><br>Ce soin aide à relâcher les tensions et à retrouver une sensation de bien-être global.<br><br>Durée : 50 minutes<br>Prix : 180₪";
+
+bookBtn.innerText="Réserver un rendez-vous";
+bookBtn.href="https://wa.me/972586874252?text=Bonjour,%20je%20souhaite%20réserver%20un%20massage%20corps%20entier%20(50%20min).";
+
+backBtn.innerText="← Retour aux soins";
+}
+
+/* HE */
+if(lang==="he"){
+pageTitle.innerText="עיסוי גוף מלא | Zen Therapy";
+title.innerText="עיסוי גוף מלא — 50 דקות";
+
+desc.innerHTML="עיסוי מלא לגוף בהשראת טכניקות קליפורניות ושוודיות,<br>המיועד להרפיית הגוף והנפש.<br><br>הטיפול מסייע לשחרור מתחים ולהחזרת תחושת רוגע ואיזון.<br><br>משך הטיפול: 50 דקות<br>מחיר: 180₪";
+
+bookBtn.innerText="קביעת תור";
+bookBtn.href="https://wa.me/972586874252?text=שלום,%20אני%20רוצה%20לקבוע%20עיסוי%20גוף%20מלא%20(50%20דקות).";
+
+backBtn.innerText="← חזרה לטיפולים";
+}
+
+/* EN */
+if(lang==="en"){
+pageTitle.innerText="Full Body Massage | Zen Therapy";
+title.innerText="Full Body Massage — 50 min";
+
+desc.innerHTML="A complete massage inspired by Californian and Swedish techniques,<br>designed to relax the body and calm the mind.<br><br>This treatment helps release tension and restore a deep sense of well-being.<br><br>Duration: 50 minutes<br>Price: 180₪";
+
+bookBtn.innerText="Book appointment";
+bookBtn.href="https://wa.me/972586874252?text=Hello,%20I%20would%20like%20to%20book%20a%20full%20body%20massage%20(50%20min).";
+
+backBtn.innerText="← Back to treatments";
+}
+
+}
+
+/* AUTO LOAD */
+window.onload = function(){
+let savedLang = localStorage.getItem("lang");
+if(savedLang){
+setLang(savedLang);
+}
+}
+
+</script>
 
 </body>
 </html>
