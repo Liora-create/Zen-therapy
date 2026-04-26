@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zen Therapy</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#f5eee7;
+color:#2c211c;
+}
+
+/* HERO FULL SCREEN */
+header{
+height:100vh;
+background:
+linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+url('spa.jpg.PNG') center/cover no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+text-align:center;
+position:relative;
+}
+
+/* LANG SWITCH */
+.lang-switch{
+position:absolute;
+top:20px;
+right:20px;
+}
+
+.lang-switch button{
+margin:3px;
+padding:6px 12px;
+border:none;
+background:#a67c52;
+color:white;
+border-radius:20px;
+cursor:pointer;
+}
+
+/* HERO TEXT */
+.hero-content{
+animation:fadeSlide 1.2s ease forwards;
+}
+
+@keyframes fadeSlide{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.hero-content h1{
+font-size:32px;
+font-weight:300;
+letter-spacing:2px;
+}
+
+.hero-content p{
+margin-top:15px;
+opacity:0.9;
+}
+
+/* BUTTON */
+.btn{
+display:inline-block;
+margin-top:20px;
+padding:14px 28px;
+border-radius:30px;
+background:#a67c52;
+color:white;
+text-decoration:none;
+}
+
+/* SECTION */
+.section{
+padding:40px 20px;
+max-width:800px;
+margin:auto;
+}
+
+/* BANDES */
+.band{
+background:#2c211c;
+color:white;
+padding:20px;
+margin:15px 0;
+border-radius:10px;
+cursor:pointer;
+}
+
+/* CONTENU */
+.content{
+max-height:0;
+overflow:hidden;
+transition:0.4s;
+background:#e9ded2;
+color:#2c211c;
+padding:0 20px;
+border-radius:0 0 10px 10px;
+}
+
+.content.open{
+max-height:600px;
+padding:20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="lang-switch">
+<button onclick="setLang('en')">EN</button>
+<button onclick="setLang('fr')">FR</button>
+<button onclick="setLang('he')">HE</button>
+</div>
+
+<div class="hero-content">
+<h1 id="heroTitle">Relaxation & Wellness</h1>
+<p id="heroSub">A moment just for you</p>
+<a id="heroBtn" href="https://wa.me/972586874252" class="btn">Send message</a>
+</div>
+
+</header>
+
+<div class="section">
+
+<!-- SEMI -->
+<div class="band" onclick="toggle(this)" id="semiTitle">
+Semi Massage — 30 min — 100₪
+<div class="content" id="semiContent"></div>
+</div>
+
+<!-- FULL -->
+<div class="band" onclick="toggle(this)" id="fullTitle">
+Full Body — 50 min — 180₪
+<div class="content" id="fullContent"></div>
+</div>
+
+<!-- RITUAL -->
+<div class="band" onclick="toggle(this)" id="ritualTitle">
+Complete Ritual — 70 min — 250₪
+<div class="content" id="ritualContent"></div>
+</div>
+
+<!-- THAI -->
+<div class="band" onclick="toggle(this)" id="thaiTitle">
+Thai Massage — 60 min — 300₪
+<div class="content" id="thaiContent"></div>
+</div>
+
+<!-- STONE -->
+<div class="band" onclick="toggle(this)" id="stoneTitle">
+Hot Stone — 60 min — 300₪
+<div class="content" id="stoneContent"></div>
+</div>
+
+</div>
+
+<script>
+
+function toggle(el){
+let content = el.querySelector(".content");
+content.classList.toggle("open");
+}
+
+function setLang(lang){
+localStorage.setItem("lang",lang);
+document.body.style.direction = (lang==="he")?"rtl":"ltr";
+
+/* EN */
+if(lang==="en"){
+heroTitle.innerText="Relaxation & Wellness";
+heroSub.innerText="A moment just for you";
+heroBtn.innerText="Send message";
+
+semiTitle.innerText="Semi Massage — 30 min — 100₪";
+semiContent.innerHTML="A relaxing and targeted massage designed to release tension.<br><br><a href='https://wa.me/972586874252' class='btn'>Book</a>";
+
+fullTitle.innerText="Full Body — 50 min — 180₪";
+fullContent.innerHTML="A complete massage to relax body and mind.<br><br><a href='https://wa.me/972586874252' class='btn'>Book</a>";
+
+ritualTitle.innerText="Complete Ritual — 70 min — 250₪";
+ritualContent.innerHTML="A full wellness experience.<br><br><a href='https://wa.me/972586874252' class='btn'>Book</a>";
+
+thaiTitle.innerText="Thai Massage — 60 min — 300₪";
+thaiContent.innerHTML="Dynamic stretching massage.<br><br><a href='https://wa.me/972586874252' class='btn'>Book</a>";
+
+stoneTitle.innerText="Hot Stone — 60 min — 300₪";
+stoneContent.innerHTML="Deep relaxation with hot stones.<br><br><a href='https://wa.me/972586874252' class='btn'>Book</a>";
+}
+
+/* FR */
+if(lang==="fr"){
+heroTitle.innerText="Relaxation & Bien-être";
+heroSub.innerText="Un moment rien que pour vous";
+heroBtn.innerText="Envoyer un message";
+
+semiTitle.innerText="Massage ciblé — 30 min — 100₪";
+semiContent.innerHTML="Massage relaxant ciblé.<br><br><a href='https://wa.me/972586874252' class='btn'>Réserver</a>";
+
+fullTitle.innerText="Massage corps entier — 50 min — 180₪";
+fullContent.innerHTML="Massage complet relaxant.<br><br><a href='https://wa.me/972586874252' class='btn'>Réserver</a>";
+
+ritualTitle.innerText="Rituel complet — 70 min — 250₪";
+ritualContent.innerHTML="Expérience bien-être complète.<br><br><a href='https://wa.me/972586874252' class='btn'>Réserver</a>";
+
+thaiTitle.innerText="Massage thaï — 60 min — 300₪";
+thaiContent.innerHTML="Massage dynamique.<br><br><a href='https://wa.me/972586874252' class='btn'>Réserver</a>";
+
+stoneTitle.innerText="Pierres chaudes — 60 min — 300₪";
+stoneContent.innerHTML="Relaxation profonde.<br><br><a href='https://wa.me/972586874252' class='btn'>Réserver</a>";
+}
+
+/* HE */
+if(lang==="he"){
+heroTitle.innerText="רוגע ושלווה";
+heroSub.innerText="רגע לעצמך";
+heroBtn.innerText="שלחי הודעה";
+
+semiTitle.innerText="עיסוי חלקי — 30 דקות — 100₪";
+semiContent.innerHTML="עיסוי ממוקד להרפיה.<br><br><a href='https://wa.me/972586874252' class='btn'>קבעי תור</a>";
+
+fullTitle.innerText="עיסוי גוף מלא — 50 דקות — 180₪";
+fullContent.innerHTML="עיסוי מרגיע מלא.<br><br><a href='https://wa.me/972586874252' class='btn'>קבעי תור</a>";
+
+ritualTitle.innerText="טיפול מלא — 70 דקות — 250₪";
+ritualContent.innerHTML="חוויה מלאה.<br><br><a href='https://wa.me/972586874252' class='btn'>קבעי תור</a>";
+
+thaiTitle.innerText="עיסוי תאילנדי — 60 דקות — 300₪";
+thaiContent.innerHTML="עיסוי דינמי.<br><br><a href='https://wa.me/972586874252' class='btn'>קבעי תור</a>";
+
+stoneTitle.innerText="אבנים חמות — 60 דקות — 300₪";
+stoneContent.innerHTML="הרפיה עמוקה.<br><br><a href='https://wa.me/972586874252' class='btn'>קבעי תור</a>";
+}
+
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+setLang(localStorage.getItem("lang") || "en");
+});
+
+</script>
+
+</body>
+</html>
