@@ -1,33 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hot Stone Massage | Zen Therapy</title>
+<title id="pageTitle">Massage aux pierres chaudes | Zen Therapy</title>
 
 <style>
 body{
 margin:0;
-font-family: Arial, sans-serif;
+font-family:Arial;
 background:#f5eee7;
 color:#2c211c;
 }
 
 header{
 height:40vh;
-background:
-linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
-url('spa.jpg.PNG') center/cover no-repeat;
+background:linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)),url('spa.jpg.PNG') center/cover;
 display:flex;
 align-items:center;
 justify-content:center;
 color:white;
+position:relative;
 text-align:center;
 }
 
-header h1{
-font-weight:300;
-letter-spacing:2px;
+.lang-switch{
+position:absolute;
+top:15px;
+right:15px;
+}
+
+.lang-switch button{
+margin:3px;
+padding:5px 10px;
+border:none;
+background:#a67c52;
+color:white;
+border-radius:20px;
+cursor:pointer;
 }
 
 .section{
@@ -40,11 +50,6 @@ max-width:600px;
 margin:auto;
 }
 
-.container p{
-line-height:1.6;
-margin-bottom:30px;
-}
-
 .btn{
 display:inline-block;
 padding:14px 28px;
@@ -52,35 +57,13 @@ border-radius:30px;
 background:#a67c52;
 color:white;
 text-decoration:none;
+margin-top:20px;
 }
 
 .back{
 display:block;
 margin-top:30px;
 color:#a67c52;
-text-decoration:none;
-}
-  /* ANIMATION PAGE */
-
-.content{
-opacity:0;
-transform:translateY(30px);
-animation:fadeUp 1.3s ease forwards;
-}
-
-.content p{
-animation-delay:0.2s;
-}
-
-.content .btn{
-animation-delay:0.4s;
-}
-
-@keyframes fadeUp{
-to{
-opacity:1;
-transform:translateY(0);
-}
 }
 </style>
 </head>
@@ -88,30 +71,81 @@ transform:translateY(0);
 <body>
 
 <header>
-<h1>Hot Stone Massage — 60 min</h1>
+
+<div class="lang-switch">
+<button onclick="setLang('fr')">FR</button>
+<button onclick="setLang('en')">EN</button>
+<button onclick="setLang('he')">HE</button>
+</div>
+
+<h1 id="title">Massage aux pierres chaudes — 60 min</h1>
+
 </header>
 
 <div class="section">
-<div class="container content">
+<div class="container">
 
-<p>
-A deeply relaxing massage using warm stones to soothe muscles and melt away tension.
-
-The heat of the stones enhances relaxation and promotes a profound sense of well-being.
-
-<br><br>
-Duration: 60 minutes  
-Price: 250₪
+<p id="desc">
+Un massage profondément relaxant utilisant des pierres chaudes pour détendre les muscles et libérer les tensions.<br><br>
+La chaleur pénètre profondément et favorise une relaxation intense et une sensation de bien-être durable.<br><br>
+Durée : 60 minutes<br>
+Prix : 300₪
 </p>
 
-<a href="https://wa.me/972586874252?text=Hello,%20I%20would%20like%20to%20book%20a%20Hot%20Stone%20Massage%20(60%20min).%20Do%20you%20have%20availability%3F" class="btn">
-Book an appointment
+<a id="bookBtn" href="https://wa.me/972586874252" class="btn">
+Réserver un rendez-vous
 </a>
 
-<a href="index.html" class="back">← Back to treatments</a>
+<a href="index.html" class="back" id="backBtn">← Retour aux soins</a>
 
 </div>
 </div>
+
+<script>
+
+function setLang(lang){
+
+localStorage.setItem("lang", lang);
+
+// direction RTL si hébreu
+document.body.style.direction = (lang==="he") ? "rtl" : "ltr";
+
+/* FR */
+if(lang==="fr"){
+pageTitle.innerText="Massage aux pierres chaudes | Zen Therapy";
+title.innerText="Massage aux pierres chaudes — 60 min";
+desc.innerHTML="Un massage profondément relaxant utilisant des pierres chaudes pour détendre les muscles et libérer les tensions.<br><br>La chaleur pénètre profondément et favorise une relaxation intense et une sensation de bien-être durable.<br><br>Durée : 60 minutes<br>Prix : 300₪";
+bookBtn.innerText="Réserver un rendez-vous";
+backBtn.innerText="← Retour aux soins";
+}
+
+/* EN */
+if(lang==="en"){
+pageTitle.innerText="Hot Stone Massage | Zen Therapy";
+title.innerText="Hot Stone Massage — 60 min";
+desc.innerHTML="A deeply relaxing massage using warm stones to release tension and soothe muscles.<br><br>The heat penetrates deeply, promoting intense relaxation and a lasting sense of well-being.<br><br>Duration: 60 minutes<br>Price: 300₪";
+bookBtn.innerText="Book appointment";
+backBtn.innerText="← Back to treatments";
+}
+
+/* HE */
+if(lang==="he"){
+pageTitle.innerText="אבנים חמות | Zen Therapy";
+title.innerText="עיסוי אבנים חמות — 60 דקות";
+desc.innerHTML="עיסוי מרגיע עמוק באמצעות אבנים חמות לשחרור מתחים והרפיית השרירים.<br><br>החום חודר עמוק ומעניק תחושת רוגע עמוקה ונעימה.<br><br>משך: 60 דקות<br>מחיר: 300₪";
+bookBtn.innerText="קבעי תור";
+backBtn.innerText="← חזרה לטיפולים";
+}
+
+}
+
+/* chargement automatique */
+document.addEventListener("DOMContentLoaded", function(){
+let savedLang = localStorage.getItem("lang") || "fr";
+setLang(savedLang);
+});
+
+</script>
 
 </body>
 </html>
