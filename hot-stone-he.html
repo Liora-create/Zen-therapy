@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="he">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>אבנים חמות | Zen Therapy</title>
+<title id="pageTitle">Hot Stone Massage | Zen Therapy</title>
 
 <style>
 body{
@@ -11,7 +11,7 @@ margin:0;
 font-family: Arial, sans-serif;
 background:#f5eee7;
 color:#2c211c;
-direction:rtl;
+direction:ltr;
 }
 
 header{
@@ -24,11 +24,29 @@ align-items:center;
 justify-content:center;
 color:white;
 text-align:center;
+position:relative;
 }
 
 header h1{
 font-weight:300;
 letter-spacing:2px;
+}
+
+/* LANG SWITCH */
+.lang-switch{
+position:absolute;
+top:15px;
+right:15px;
+}
+
+.lang-switch button{
+margin:3px;
+padding:5px 10px;
+border:none;
+background:#a67c52;
+color:white;
+border-radius:20px;
+cursor:pointer;
 }
 
 .section{
@@ -68,14 +86,6 @@ transform:translateY(30px);
 animation:fadeUp 1.3s ease forwards;
 }
 
-.content p{
-animation-delay:0.2s;
-}
-
-.content .btn{
-animation-delay:0.4s;
-}
-
 @keyframes fadeUp{
 to{
 opacity:1;
@@ -88,30 +98,99 @@ transform:translateY(0);
 <body>
 
 <header>
-<h1>אבנים חמות — 60 דקות</h1>
+
+<div class="lang-switch">
+<button onclick="setLang('en')">EN</button>
+<button onclick="setLang('fr')">FR</button>
+<button onclick="setLang('he')">HE</button>
+</div>
+
+<h1 id="title">Hot Stone Massage — 60 min</h1>
+
 </header>
 
 <div class="section">
 <div class="container content">
 
-<p>
-עיסוי מרגיע במיוחד המשתמש באבנים חמות להרפיית השרירים ושחרור מתחים.
-
-החום מהאבנים מעצים את תחושת הרוגע ומעניק חוויה עמוקה של שלווה ונוחות.
-
-<br><br>
-משך הטיפול: 60 דקות  
-מחיר: 250₪
+<p id="desc">
+A deeply relaxing massage using warm stones to release tension and soothe muscles.<br><br>
+The heat penetrates deeply, promoting intense relaxation and a lasting feeling of well-being.<br><br>
+Duration: 60 minutes<br>
+Price: 300₪
 </p>
 
-<a href="https://wa.me/972586874252?text=שלום,%20אני%20מעוניינת%20לקבוע%20עיסוי%20אבנים%20חמות%20(60%20דקות).%20האם%20יש%20לך%20זמינות%3F" class="btn">
-קביעת תור
+<a id="bookBtn" href="https://wa.me/972586874252" class="btn">
+Book appointment
 </a>
 
-<a href="index.html" class="back">← חזרה לטיפולים</a>
+<a href="index.html" class="back" id="backBtn">← Back to treatments</a>
 
 </div>
 </div>
+
+<script>
+
+function setLang(lang){
+
+localStorage.setItem("lang", lang);
+
+/* direction */
+if(lang==="he"){
+document.body.style.direction="rtl";
+}else{
+document.body.style.direction="ltr";
+}
+
+/* FR */
+if(lang==="fr"){
+pageTitle.innerText="Pierres chaudes | Zen Therapy";
+title.innerText="Massage aux pierres chaudes — 60 min";
+
+desc.innerHTML="Un massage profondément relaxant utilisant des pierres chaudes pour détendre les muscles et libérer les tensions.<br><br>La chaleur pénètre profondément et favorise une relaxation intense.<br><br>Durée : 60 minutes<br>Prix : 300₪";
+
+bookBtn.innerText="Réserver un rendez-vous";
+bookBtn.href="https://wa.me/972586874252?text=Bonjour,%20je%20souhaite%20réserver%20un%20massage%20aux%20pierres%20chaudes%20(60%20min).";
+
+backBtn.innerText="← Retour aux soins";
+}
+
+/* HE */
+if(lang==="he"){
+pageTitle.innerText="אבנים חמות | Zen Therapy";
+title.innerText="עיסוי אבנים חמות — 60 דקות";
+
+desc.innerHTML="עיסוי מרגיע במיוחד המשתמש באבנים חמות להרפיית השרירים ושחרור מתחים.<br><br>החום חודר עמוק ומעניק תחושת רוגע עמוקה ונעימה.<br><br>משך: 60 דקות<br>מחיר: 300₪";
+
+bookBtn.innerText="קבעי תור";
+bookBtn.href="https://wa.me/972586874252?text=שלום,%20אני%20רוצה%20לקבוע%20עיסוי%20אבנים%20חמות%20(60%20דקות).";
+
+backBtn.innerText="← חזרה לטיפולים";
+}
+
+/* EN */
+if(lang==="en"){
+pageTitle.innerText="Hot Stone Massage | Zen Therapy";
+title.innerText="Hot Stone Massage — 60 min";
+
+desc.innerHTML="A deeply relaxing massage using warm stones to release tension and soothe muscles.<br><br>The heat penetrates deeply, promoting intense relaxation and a lasting feeling of well-being.<br><br>Duration: 60 minutes<br>Price: 300₪";
+
+bookBtn.innerText="Book appointment";
+bookBtn.href="https://wa.me/972586874252?text=Hello,%20I%20would%20like%20to%20book%20a%20hot%20stone%20massage%20(60%20min).";
+
+backBtn.innerText="← Back to treatments";
+}
+
+}
+
+/* AUTO */
+window.onload = function(){
+let savedLang = localStorage.getItem("lang");
+if(savedLang){
+setLang(savedLang);
+}
+}
+
+</script>
 
 </body>
 </html>
